@@ -43,11 +43,22 @@ var main_state = {
 
     this.game.physics.overlap(this.bird, this.pipes, this.restart_game, null, this);
 
+    if (this.bird.angle < 20)
+      this.bird.angle += 1;
+
     },
+
 
     jump: function() {
       // Add a vertical velocity to the bird
       this.bird.body.velocity.y = -350;
+
+     var animation = this.game.add.tween(this.bird);
+
+     animation.to({angle: -20}, 100);
+
+     animation.start();
+
     },
 
     restart_game: function() {
