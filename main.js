@@ -10,6 +10,8 @@ var main_state = {
 
     this.game.load.image('bird', 'assets/bird.png');
     this.game.load.image('pipe', 'assets/pipe.png');
+
+    this.game.load.audio('jump', 'assets/jump.wav');
     },
 
     create: function() { 
@@ -33,6 +35,8 @@ var main_state = {
       this.score = 0 ;
       var style = { font: "30px Arial" , fill: '#ffffff'};
       this.label_score = this.game.add.text(20,20, "0", style);
+
+      this.jump_sound = this.game.add.audio('jump');
     },
   
     
@@ -43,7 +47,7 @@ var main_state = {
     if (this.bird.inWorld == false)
       this.restart_game();
 
-    this.game.physics.overlap(this.bird, this.pipes, this.restart_game, null, this);
+    this.game.physics.overlap(this.bird, this.pipes, this.hit_pipe, null, this);
 
     if (this.bird.angle < 20)
       this.bird.angle += 1;
@@ -51,7 +55,25 @@ var main_state = {
     },
 
 
+    hit_pipe: function() {
+    if (this.bird.alive == false) 
+    return;
+
+    this.bird.alive = false;
+
+    this.game.time.events.remove(this.timer);
+
+    this.pipes.forEachAlive(function(p) {
+      p.body.velocity.x = 0;
+    }, this);
+
+    },
+
+
     jump: function() {
+      if (this.bird.alive == false)
+        return;
+
       // Add a vertical velocity to the bird
       this.bird.body.velocity.y = -350;
 
@@ -60,6 +82,8 @@ var main_state = {
      animation.to({angle: -20}, 100);
 
      animation.start();
+
+     this.jump_sound.play();
 
     },
 
