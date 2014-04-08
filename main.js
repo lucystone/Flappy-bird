@@ -27,7 +27,6 @@ var main_state = {
       this.pipes.createMultiple(20, 'pipe');
 
       this.timer = this.game.time.events.loop(1500, this.add_row_of_pipes, this);
-    },
 
       this.score = 0 ;
       var style = { font: "30px Arial" , fill: '#ffffff'};
