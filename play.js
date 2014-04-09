@@ -107,5 +107,7 @@ var  play_state = {
 // Add and start the 'main' state to start the game
 game.state.add('main', main_state);  
 game.state.start('main'); 
-    }, 
-}
+
+
+  } 
+};

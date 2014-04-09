@@ -1,5 +1,5 @@
 var menu_state = {
-  create: funstion(){
+  create: function(){
     //call the 'start' function when pressing the space bar //
   
 var space_key = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
@@ -13,7 +13,7 @@ var space_key = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
     var x = game.world.width /2,
         y = game.world.height /2;
 
-        var text = this.game.add.text9x, y-50, "press space to start",
+      var text = this.game.add.text(x, y-50, "press space to start",
             text.anchor.setTo(0.5, 0.5);
 
     //if there is already a score//
