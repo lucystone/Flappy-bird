@@ -13,13 +13,14 @@ var space_key = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
     var x = game.world.width /2,
         y = game.world.height /2;
 
-      var text = this.game.add.text(x, y-50, "press space to start",
+      var text = this.game.add.text(x, y-50, "press space to start", style);
             text.anchor.setTo(0.5, 0.5);
 
     //if there is already a score//
-    is (score > 0) {
+    if (score > 0) {
       //display its score
-      var score_label = this.game.add.text(x, y+50, "score: " + score,style); 
+      
+      var score_label = this.game.add.text(x, y+50, "score: " + score, style); 
      score_label.anchor.setTo(0.5, 0.5); 
 
    }
