@@ -5,6 +5,8 @@ var menu_state = {
 var space_key = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
  space_key.onDown.add(this.start, this); 
 
+ this.game.input.onDown.add(this.start, this);
+
    var style = { font: "30px Arial" , fill: '#ffffff'};
       this.label_score = this.game.add.text(20,20, "0", style);
 
@@ -13,13 +15,13 @@ var space_key = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
     var x = game.world.width /2,
         y = game.world.height /2;
 
-      var text = this.game.add.text(x, y-50, "press space to start", style);
+      var text = this.game.add.text(x, y-50, "press space or click to start", style);
             text.anchor.setTo(0.5, 0.5);
 
     //if there is already a score//
     if (score > 0) {
       //display its score
-      
+
       var score_label = this.game.add.text(x, y+50, "score: " + score, style); 
      score_label.anchor.setTo(0.5, 0.5); 
 
